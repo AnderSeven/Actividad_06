@@ -30,8 +30,17 @@ def buscar_productos():
     print("---Buscar productos---")
     buscar = int(input("Ingrese el codigo del producto que desea buscar: "))
     if buscar in inventario:
-        print(f"Nombre: {inventario[buscar] ["Nombre"]},  Categoria: {inventario[buscar] ["Categoria"]}, Talla: {inventario[buscar] ["Talla"]}, Precio: ")
+        print(f"Nombre: {inventario[buscar] ["Nombre"]},  Categoria: {inventario[buscar] ["Categoria"]}, Talla: {inventario[buscar] ["Talla"]}, Precio: {inventario[buscar] ["Precio"]}, Stock; {inventario[buscar] ["Stock"]}")
+    else:
+        print("El producto que ingreso no existe")
 
+def categorias():
+    print("a")
+
+def valor_total_inventario():
+    print("a")
+def lista_completa_productos():
+    print("a")
 opciones = 0
 a = False
 while a == False:
@@ -47,9 +56,13 @@ while a == False:
         case 1:
             ingreso_productos()
         case 2:
+            buscar_productos()
         case 3:
+            buscar_productos()
         case 4:
+            valor_total_inventario()
         case 5:
+            lista_completa_productos()
         case 6:
             print("Gracias por usar el sistema...")
             a = True

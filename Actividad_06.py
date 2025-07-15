@@ -60,7 +60,17 @@ def valor_total_inventario():
     print(f"El valor total del inventario es de: Q{suma}")
 
 def lista_completa_productos():
-    print("a")
+    if len(inventario) > 0:
+        print("---Inventario---")
+        for codigo, datos in inventario.items():
+            print(f"Codigo: {codigo}")
+            print(f"  Nombre: {datos['Nombre']}")
+            print(f"  Categoria: {datos['Categoria']}")
+            print(f"  Talla: {datos['Talla']}")
+            print(f"  Precio: Q{datos['Precio']}")
+            print(f"  Stock: {datos['Stock']} unidades")
+            print("-------------------------------")
+
 opciones = 0
 a = False
 while a == False:

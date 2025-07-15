@@ -35,7 +35,14 @@ def buscar_productos():
         print("El producto que ingreso no existe")
 
 def categorias():
-    print("a")
+    stock_hombres = 0
+    stock_mujeres = 0
+    stock_ninos = 0
+
+    for i in inventario.values():
+        categoria = i["Categoria"].lower()
+        if categoria == "hombre":
+            stock_hombres += i["Stock"]
 
 def valor_total_inventario():
     suma = 0

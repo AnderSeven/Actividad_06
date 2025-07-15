@@ -8,8 +8,22 @@ def ingreso_productos():
             codigo = int(input(f"Ingrese el codigo del producto {i+1}: "))
             nombre = input(f"Ingrese el nombre del producto {i}: ")
             categoria = input(f"Ingrese la categoria del producto (Hombre, Mujer, Niño) {i}: ")
-
-
+            talla = input(f"Ingrese la talla del producto, (S, M, L, XL) {1}: ")
+            precio = float(input("Ingrese el precio del producto: "))
+            s = False
+            while s == False:
+                if precio > 0:
+                    s = True
+                else:
+                    print("El precio del producto es invalido...")
+            stock = int(input(f"Ingrese el stock del producto {i} en tienda: "))
+            inventario[codigo] = {
+                "Nombre": nombre,
+                "Categoria": categoria,
+                "Talla": talla,
+                "Precio": precio,
+                "Stock": stock
+            }
 opciones = 0
 a = False
 while a == False:
@@ -23,6 +37,7 @@ while a == False:
     opciones = int(input("Elija una opcion: "))
     match opciones:
         case 1:
+            ingreso_productos()
         case 2:
         case 3:
         case 4:

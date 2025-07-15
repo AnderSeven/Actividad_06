@@ -6,9 +6,9 @@ def ingreso_productos():
     if cantidad > 0:
         for i in range(cantidad):
             codigo = int(input(f"Ingrese el codigo del producto {i+1}: "))
-            nombre = input(f"Ingrese el nombre del producto {i}: ")
-            categoria = input(f"Ingrese la categoria del producto (Hombre, Mujer, Niño) {i}: ")
-            talla = input(f"Ingrese la talla del producto, (S, M, L, XL) {1}: ")
+            nombre = input(f"Ingrese el nombre del producto {i+1}: ")
+            categoria = input(f"Ingrese la categoria del producto (Hombre, Mujer, Niño) {i+1}: ")
+            talla = input(f"Ingrese la talla del producto, (S, M, L, XL) {i+1}: ")
             precio = float(input("Ingrese el precio del producto: "))
             s = False
             while s == False:
@@ -16,7 +16,7 @@ def ingreso_productos():
                     s = True
                 else:
                     print("El precio del producto es invalido...")
-            stock = int(input(f"Ingrese el stock del producto {i} en tienda: "))
+            stock = int(input(f"Ingrese el stock del producto {i+1} en tienda: "))
             inventario[codigo] = {
                 "Nombre": nombre,
                 "Categoria": categoria,
@@ -30,7 +30,7 @@ def buscar_productos():
     print("---Buscar productos---")
     buscar = int(input("Ingrese el codigo del producto que desea buscar: "))
     if buscar in inventario:
-        print(f"Nombre: {inventario[buscar] ["Nombre"]},  Categoria: {inventario[buscar] ["Categoria"]}, Talla: {inventario[buscar] ["Talla"]}, Precio: {inventario[buscar] ["Precio"]}, Stock; {inventario[buscar] ["Stock"]}")
+        print(f"Nombre: {inventario[buscar] ['Nombre']},  Categoria: {inventario[buscar] ['Categoria']}, Talla: {inventario[buscar] ['Talla']}, Precio: {inventario[buscar] ['Precio']}, Stock; {inventario[buscar] ['Stock']}")
     else:
         print("El producto que ingreso no existe")
 
@@ -38,7 +38,11 @@ def categorias():
     print("a")
 
 def valor_total_inventario():
-    print("a")
+    suma = 0
+    for i in inventario.values():
+        suma += i["Precio"] * i["Stock"]
+    print(f"El valor total del inventario es de: Q{suma}")
+
 def lista_completa_productos():
     print("a")
 opciones = 0
@@ -58,7 +62,7 @@ while a == False:
         case 2:
             buscar_productos()
         case 3:
-            buscar_productos()
+            categorias()
         case 4:
             valor_total_inventario()
         case 5:

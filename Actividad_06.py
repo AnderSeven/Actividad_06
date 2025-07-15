@@ -43,6 +43,15 @@ def categorias():
         categoria = i["Categoria"].lower()
         if categoria == "hombre":
             stock_hombres += i["Stock"]
+        elif categoria == "mujer":
+            stock_mujeres += i["Stock"]
+        elif categoria == "niño":
+            stock_ninos += i["Stock"]
+
+    print("---Stock por categoria---")
+    print(f"Hombre: {stock_hombres} unidades")
+    print(f"Mujer: {stock_mujeres} unidades")
+    print(f"Niño: {stock_ninos} unidades")
 
 def valor_total_inventario():
     suma = 0

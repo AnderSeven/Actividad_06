@@ -1,3 +1,15 @@
+inventario = {}
+
+def ingreso_productos():
+    print("\n---Ingreso de productos---")
+    cantidad = int(input("Cuantos productos desea ingresar: "))
+    if cantidad > 0:
+        for i in range(cantidad):
+            codigo = int(input(f"Ingrese el codigo del producto {i+1}: "))
+            nombre = input(f"Ingrese el nombre del producto {i}: ")
+            categoria = input(f"Ingrese la categoria del producto (Hombre, Mujer, Niño) {i}: ")
+
+
 opciones = 0
 a = False
 while a == False:

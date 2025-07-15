@@ -24,6 +24,14 @@ def ingreso_productos():
                 "Precio": precio,
                 "Stock": stock
             }
+            print("Se ha registrado el producto")
+
+def buscar_productos():
+    print("---Buscar productos---")
+    buscar = int(input("Ingrese el codigo del producto que desea buscar: "))
+    if buscar in inventario:
+        print(f"Nombre: {inventario[buscar] ["Nombre"]},  Categoria: {inventario[buscar] ["Categoria"]}, Talla: {inventario[buscar] ["Talla"]}, Precio: ")
+
 opciones = 0
 a = False
 while a == False:

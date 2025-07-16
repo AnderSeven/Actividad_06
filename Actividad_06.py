@@ -1,4 +1,3 @@
-from logging import exception
 
 inventario = {}
 
@@ -19,58 +18,57 @@ def ingreso_productos():
         while s == False:
             try:
                 codigo = int(input(f"Ingrese el codigo del producto {i+1}: "))
-                for a in inventario:
-                    if codigo == a.inventario[codigo]:
-                        s = True
-                    else:
-                        print("El codigo es invalido")
+                if codigo not in inventario:
+                    s = True
+                else:
+                    print("El codigo es invalido porque ya esta registrado en otro producto")
             except ValueError:
                 print("El codigo debe de ser un numero valido")
-            nombre = input(f"Ingrese el nombre del producto {i+1}: ")
-            s = False
-            while s == False:
-                categoria = input(f"Ingrese la categoria del producto (Hombre, Mujer, Niño) {i+1}: ").lower()
-                if categoria in ["hombre", "mujer", "niño"]:
+        nombre = input(f"Ingrese el nombre del producto {i+1}: ")
+        s = False
+        while s == False:
+            categoria = input(f"Ingrese la categoria del producto (Hombre, Mujer, Niño) {i+1}: ").lower()
+            if categoria in ["hombre", "mujer", "niño"]:
+                s = True
+            else:
+                print("Categoria invalida")
+        s = False
+        while s == False:
+            talla = input(f"Ingrese la talla del producto, (S, M, L, XL) {i+1}: ").upper()
+            if talla in ["S", "M", "L", "XL"]:
+                s = True
+            else:
+                print("Talla invalida")
+        s = False
+        while s == False:
+            try:
+                precio = float(input("Ingrese el precio del producto: "))
+                if precio > 0:
                     s = True
                 else:
-                    print("Categoria invalida")
-            s = False
-            while s == False:
-                talla = input(f"Ingrese la talla del producto, (S, M, L, XL) {i+1}: ").upper()
-                if talla in ["S", "M", "L", "XL"]:
+                    print("El precio del producto debe de ser mayor a 0...")
+            except ValueError:
+                print("Ingrese un numero valido para el precio")
+
+        s = False
+        while s == False:
+            try:
+                stock = int(input(f"Ingrese el stock del producto {i+1} en tienda: "))
+                if stock >= 0:
                     s = True
                 else:
-                    print("Talla invalida")
-            s = False
-            while s == False:
-                try:
-                    precio = float(input("Ingrese el precio del producto: "))
-                    if precio > 0:
-                        s = True
-                    else:
-                        print("El precio del producto debe de ser mayor a 0...")
-                except ValueError:
-                    print("Ingrese un numero valido para el precio")
+                    print("El stock no puede ser un numero negativo")
+            except ValueError:
+                print("Ingrese un numero valio para el stock")
 
-            s = False
-            while s == False:
-                try:
-                    stock = int(input(f"Ingrese el stock del producto {i+1} en tienda: "))
-                    if stock >= 0:
-                        s = True
-                    else:
-                        print("El stock no puede ser un numero negativo")
-                except ValueError:
-                    print("Ingrese un numero valio para el stock")
-
-            inventario[codigo] = {
-                "Nombre": nombre,
-                "Categoria": categoria,
-                "Talla": talla,
-                "Precio": precio,
-                "Stock": stock
-            }
-            print("Se ha registrado el producto")
+        inventario[codigo] = {
+            "Nombre": nombre,
+            "Categoria": categoria,
+            "Talla": talla,
+            "Precio": precio,
+            "Stock": stock
+        }
+        print("Se ha registrado el producto")
 
 def buscar_productos():
     print("---Buscar productos---")

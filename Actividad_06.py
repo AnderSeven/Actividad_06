@@ -71,37 +71,46 @@ def ingreso_productos():
         print("Se ha registrado el producto")
 
 def buscar_productos():
-    print("---Buscar productos---")
-    buscar = int(input("Ingrese el codigo del producto que desea buscar: "))
-    if buscar in inventario:
-        print(f"Nombre: {inventario[buscar] ['Nombre']},  Categoria: {inventario[buscar] ['Categoria']}, Talla: {inventario[buscar] ['Talla']}, Precio: {inventario[buscar] ['Precio']}, Stock; {inventario[buscar] ['Stock']}")
+    if len(inventario) > 0:
+        print("---Buscar productos---")
+        buscar = int(input("Ingrese el codigo del producto que desea buscar: "))
+        if buscar in inventario:
+            print(f"Nombre: {inventario[buscar] ['Nombre']},  Categoria: {inventario[buscar] ['Categoria']}, Talla: {inventario[buscar] ['Talla']}, Precio: {inventario[buscar] ['Precio']}, Stock; {inventario[buscar] ['Stock']}")
+        else:
+            print("El producto que ingreso no existe")
     else:
-        print("El producto que ingreso no existe")
+        print("No hay nada en el inventario")
 
 def categorias():
-    stock_hombres = 0
-    stock_mujeres = 0
-    stock_ninos = 0
+    if len(inventario) > 0:
+        stock_hombres = 0
+        stock_mujeres = 0
+        stock_ninos = 0
 
-    for i in inventario.values():
-        categoria = i["Categoria"].lower()
-        if categoria == "hombre":
-            stock_hombres += i["Stock"]
-        elif categoria == "mujer":
-            stock_mujeres += i["Stock"]
-        elif categoria == "niño":
-            stock_ninos += i["Stock"]
+        for i in inventario.values():
+            categoria = i["Categoria"].lower()
+            if categoria == "hombre":
+                stock_hombres += i["Stock"]
+            elif categoria == "mujer":
+                stock_mujeres += i["Stock"]
+            elif categoria == "niño":
+                stock_ninos += i["Stock"]
 
-    print("---Stock por categoria---")
-    print(f"Hombre: {stock_hombres} unidades")
-    print(f"Mujer: {stock_mujeres} unidades")
-    print(f"Niño: {stock_ninos} unidades")
+        print("---Stock por categoria---")
+        print(f"Hombre: {stock_hombres} unidades")
+        print(f"Mujer: {stock_mujeres} unidades")
+        print(f"Niño: {stock_ninos} unidades")
+    else:
+        print("No hay nada en el inventario")
 
 def valor_total_inventario():
-    suma = 0
-    for i in inventario.values():
-        suma += i["Precio"] * i["Stock"]
-    print(f"El valor total del inventario es de: Q{suma}")
+    if len(inventario) > 0:
+        suma = 0
+        for i in inventario.values():
+            suma += i["Precio"] * i["Stock"]
+        print(f"El valor total del inventario es de: Q{suma}")
+    else:
+        print("No hay nada en el inventario")
 
 def lista_completa_productos():
     if len(inventario) > 0:
@@ -114,6 +123,8 @@ def lista_completa_productos():
             print(f"  Precio: Q{datos['Precio']}")
             print(f"  Stock: {datos['Stock']} unidades")
             print("-------------------------------")
+    else:
+        print("No hay nada en el inventario")
 
 opciones = 0
 a = False

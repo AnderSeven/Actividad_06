@@ -1,3 +1,5 @@
+from logging import exception
+
 inventario = {}
 
 def ingreso_productos():
@@ -18,7 +20,7 @@ def ingreso_productos():
             try:
                 codigo = int(input(f"Ingrese el codigo del producto {i+1}: "))
                 for a in inventario:
-                    if codigo == a.inventario[codigo]
+                    if codigo == a.inventario[codigo]:
                         s = True
                     else:
                         print("El codigo es invalido")
@@ -32,15 +34,35 @@ def ingreso_productos():
                     s = True
                 else:
                     print("Categoria invalida")
-            talla = input(f"Ingrese la talla del producto, (S, M, L, XL) {i+1}: ")
-            precio = float(input("Ingrese el precio del producto: "))
             s = False
             while s == False:
-                if precio > 0:
+                talla = input(f"Ingrese la talla del producto, (S, M, L, XL) {i+1}: ").upper()
+                if talla in ["S", "M", "L", "XL"]:
                     s = True
                 else:
-                    print("El precio del producto es invalido...")
-            stock = int(input(f"Ingrese el stock del producto {i+1} en tienda: "))
+                    print("Talla invalida")
+            s = False
+            while s == False:
+                try:
+                    precio = float(input("Ingrese el precio del producto: "))
+                    if precio > 0:
+                        s = True
+                    else:
+                        print("El precio del producto debe de ser mayor a 0...")
+                except ValueError:
+                    print("Ingrese un numero valido para el precio")
+
+            s = False
+            while s == False:
+                try:
+                    stock = int(input(f"Ingrese el stock del producto {i+1} en tienda: "))
+                    if stock >= 0:
+                        s = True
+                    else:
+                        print("El stock no puede ser un numero negativo")
+                except ValueError:
+                    print("Ingrese un numero valio para el stock")
+
             inventario[codigo] = {
                 "Nombre": nombre,
                 "Categoria": categoria,

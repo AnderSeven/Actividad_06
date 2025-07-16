@@ -22,8 +22,16 @@ def ingreso_productos():
                         s = True
                     else:
                         print("El codigo es invalido")
+            except ValueError:
+                print("El codigo debe de ser un numero valido")
             nombre = input(f"Ingrese el nombre del producto {i+1}: ")
-            categoria = input(f"Ingrese la categoria del producto (Hombre, Mujer, Niño) {i+1}: ")
+            s = False
+            while s == False:
+                categoria = input(f"Ingrese la categoria del producto (Hombre, Mujer, Niño) {i+1}: ").lower()
+                if categoria in ["hombre", "mujer", "niño"]:
+                    s = True
+                else:
+                    print("Categoria invalida")
             talla = input(f"Ingrese la talla del producto, (S, M, L, XL) {i+1}: ")
             precio = float(input("Ingrese el precio del producto: "))
             s = False

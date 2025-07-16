@@ -118,27 +118,33 @@ def lista_completa_productos():
 opciones = 0
 a = False
 while a == False:
-    print("---Menu---")
+    print("\n---Menu---")
     print("1. Ingrese productos")
     print("2. Buscar productos")
     print("3. Categorias")
     print("4. Valor total del inventario Q")
     print("5. Lista completa de productos")
     print("6. Salir")
-    opciones = int(input("Elija una opcion: "))
-    match opciones:
-        case 1:
-            ingreso_productos()
-        case 2:
-            buscar_productos()
-        case 3:
-            categorias()
-        case 4:
-            valor_total_inventario()
-        case 5:
-            lista_completa_productos()
-        case 6:
-            print("Gracias por usar el sistema...")
-            a = True
-        case _:
-            print("Opcion invalida")
+    v = True
+    try:
+        opciones = int(input("Elija una opcion: "))
+    except ValueError:
+        print("Debe de ingresar un numero valido")
+        v = False
+    if v == True:
+        match opciones:
+            case 1:
+                ingreso_productos()
+            case 2:
+                buscar_productos()
+            case 3:
+                categorias()
+            case 4:
+                valor_total_inventario()
+            case 5:
+                lista_completa_productos()
+            case 6:
+                print("Gracias por usar el sistema...")
+                a = True
+            case _:
+                print("Opcion invalida")

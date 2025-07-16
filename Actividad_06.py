@@ -2,10 +2,26 @@ inventario = {}
 
 def ingreso_productos():
     print("\n---Ingreso de productos---")
-    cantidad = int(input("Cuantos productos desea ingresar: "))
-    if cantidad > 0:
-        for i in range(cantidad):
-            codigo = int(input(f"Ingrese el codigo del producto {i+1}: "))
+    s = False
+    while s == False:
+        try:
+            cantidad = int(input("Cuantos productos desea ingresar: "))
+            if cantidad > 0:
+                s = True
+            else:
+                print("La cantidad debe de ser mayor a 0")
+        except ValueError:
+            print("Ingrese un numero valido")
+    for i in range(cantidad):
+        s = False
+        while s == False:
+            try:
+                codigo = int(input(f"Ingrese el codigo del producto {i+1}: "))
+                for a in inventario:
+                    if codigo == a.inventario[codigo]
+                        s = True
+                    else:
+                        print("El codigo es invalido")
             nombre = input(f"Ingrese el nombre del producto {i+1}: ")
             categoria = input(f"Ingrese la categoria del producto (Hombre, Mujer, Niño) {i+1}: ")
             talla = input(f"Ingrese la talla del producto, (S, M, L, XL) {i+1}: ")
